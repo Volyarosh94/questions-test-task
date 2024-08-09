@@ -1,0 +1,30 @@
+<div class="page">
+  <div class="container mod-questions">
+    <h2 class="title">Questions List</h2>
+
+    <form [formGroup]="questionForm" (ngSubmit)="addQuestion()" class="add-question-form">
+      <div class="form-group">
+        <label for="newQuestion">New Question</label>
+        <input type="text" id="newQuestion" formControlName="text">
+        <div *ngIf="isLengthError" class="error-message">Question must be at least 5 characters long
+        </div>
+      </div>
+      <div class="form-actions mod-row">
+        <button type="submit"
+                class="btn btn--primary btn-add-question"
+                [disabled]="questionForm.invalid">Add Question
+        </button>
+      </div>
+    </form>
+
+    <ul class="questions-list">
+      <li *ngFor="let question of questions" class="question-item">
+        {{ question.text }}
+        <div>
+          <button (click)="editQuestion(question)" class="btn btn--secondary">Edit</button>
+          <button (click)="deleteQuestion(question)" class="btn btn--delete">Delete</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

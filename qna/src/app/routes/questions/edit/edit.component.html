@@ -1,0 +1,19 @@
+<div class="page">
+  <div class="container mod-questions">
+    <h2 class="title">Edit question</h2>
+
+    <form *ngIf="editForm" [formGroup]="editForm" (ngSubmit)="save()" class="add-question-form">
+      <div class="form-group">
+        <input type="text" id="newQuestion" formControlName="text">
+        <div *ngIf="hasErrors" class="error-message">
+          <div *ngIf="isLengthError">Question must be at least 5 characters long.</div>
+        </div>
+      </div>
+      <div class="form-actions mod-row">
+        <button (click)="save()" type="submit" class="btn btn--primary">Save</button>
+        <button (click)="cancel()" class="btn btn--secondary">Cancel</button>
+        <button (click)="delete()" class="btn btn--delete">Delete</button>
+      </div>
+    </form>
+  </div>
+</div>
